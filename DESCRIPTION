@@ -1,0 +1,13 @@
+Package: maplandscape
+Title: map.landscape
+Version: 0.0.0.9000
+Authors@R: person('John', 'Duncan', email = 'john.duncan@uwa.edu.au', role = c('cre', 'aut'))
+Description: Quickly explore geospatial data collected using QField mobile GIS.
+License: What license is it under?
+Imports: 
+    config,
+    golem,
+    shiny
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
