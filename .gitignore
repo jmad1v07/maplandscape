@@ -1,3 +1,9 @@
 .Rhistory
 .RData
 .Rproj.user
+
+dev/
+
+renv/
+
+rsconnect/
