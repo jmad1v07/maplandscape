@@ -50,6 +50,8 @@ collected on different mobile devices, and map.landscape for data
 processing and visualisation. map.landscape also includes some helper
 functions for characterising farm diversity.
 
+<img src="man/figures/workflow.png" width="80%" style="display: block; margin: auto;" />
+
 This dashboard is currently being used to support the Ministry of
 Agriculture, Food, Forests, and Fisheries monitoring of farms on the
 island group of Vava’u in the Kingdom of Tonga. You can read about these
@@ -61,7 +63,7 @@ use cases
 ## Web Application
 
 A version of map.landscape is available at
-<a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.tonga-crop-survey.com</a>.
+<a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.livelihoods-and-landscapes.com</a>.
 
 ## R Package
 

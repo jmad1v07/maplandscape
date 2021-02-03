@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "man/figures/",
   out.width = "100%"
 )
 ```
@@ -37,13 +37,18 @@ The motivation to develop map.landscape was to quickly explore and sync data col
 
 map.landscape forms part of workflow developed by the <a href="https://livelihoods-and-landscapes.com" target="_blank">ACIAR Livelihoods and Landscapes</a> project to map agricultural landscapes and record information about farm management and condition. This workflow encompasses collecting geospatial data in the field using QField mobile GIS, Express server-side apps to support collating data collected on different mobile devices, and map.landscape for data processing and visualisation. map.landscape also includes some helper functions for characterising farm diversity. 
 
+```{r, echo = FALSE, out.width = "80%", fig.align = "center"}
+
+knitr::include_graphics("man/figures/workflow.png")
+```
+
 This dashboard is currently being used to support the Ministry of Agriculture, Food, Forests, and Fisheries monitoring of farms on the island group of Vava'u in the Kingdom of Tonga. You can read about these use cases <a href="https://livelihoods-and-landscapes.com/use-case.html" target="_blank">here</a>. 
 
 # Use 
 
 ## Web Application
 
-A version of map.landscape is available at <a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.tonga-crop-survey.com</a>.
+A version of map.landscape is available at <a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.livelihoods-and-landscapes.com</a>.
 
 ## R Package
 
