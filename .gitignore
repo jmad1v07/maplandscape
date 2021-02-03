@@ -7,3 +7,4 @@ dev/
 renv/
 
 rsconnect/
+inst/doc

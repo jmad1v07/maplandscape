@@ -52,8 +52,29 @@ functions for characterising farm diversity.
 
 This dashboard is currently being used to support the Ministry of
 Agriculture, Food, Forests, and Fisheries monitoring of farms on the
-island group of Vava’u in the Kingdom of Tonga. You can read more about
-these use cases
+island group of Vava’u in the Kingdom of Tonga. You can read about these
+use cases
 <a href="https://livelihoods-and-landscapes.com/use-case.html" target="_blank">here</a>.
 
 # Use
+
+## Web Application
+
+A version of map.landscape is available at
+<a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.tonga-crop-survey.com</a>.
+
+## R Package
+
+Install as an R package.
+
+``` r
+install.packages("devtools")
+devtools::install_github("livelihoods-and-landscapes/maplandscape")
+```
+
+Launch the application.
+
+``` r
+library(maplandscape)
+run_app()
+```

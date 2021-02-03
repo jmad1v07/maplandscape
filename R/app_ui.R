@@ -178,8 +178,6 @@ app_ui <- function(request) {
           ),
         ),
         
-        
-        
         # show data tables
         mainPanel(tabsetPanel(
           type = "tabs",
@@ -484,7 +482,13 @@ app_ui <- function(request) {
               )
             ),
             tabPanel(
-              "Summary Tables"
+              "Summary Tables",
+              tags$div(
+                style = "padding-top: 10px;
+                                padding-right: 10px;
+                                padding-bottom: 10px;
+                                padding-left: 10px;",
+              )
             ),
             tabPanel(
               "Combine Tables"

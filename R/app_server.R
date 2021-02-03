@@ -414,8 +414,8 @@ app_server <- function(input, output, session) {
           "Filter conditions must be specified using dplyr syntax. Some tips:"
         ),
         tags$ul(
-          tags$li("Escape quotes for strings - \"string\""),
-          tags$li("Escape apostrophes within strings - \"vava\'u\""),
+          tags$li("Quotes for strings - \"string\""),
+          tags$li("Escape apostrophes within strings - \"vava\\'u\""),
           tags$li("Specify column names without quotes"),
           tags$li("== - equal to"),
           tags$li("!= - not equal to"),
