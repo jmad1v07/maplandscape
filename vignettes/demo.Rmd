@@ -42,6 +42,10 @@ Thornton, P. and Herrero, M. (2015) Adapting to climate change in the mixed crop
 
 Bégué, A. et al. (2018) Remote Sensing and Cropping Practices: A Review. *Remote Sensing*, 10(1), 99, <a href="https://doi.org/10.3390/rs10010099" target="_blank">https://doi.org/10.3390/rs10010099</a>.
 
+```{r, echo = FALSE, fig.align = "center", out.width = "85%", fig.cap = "Source:  Bégué et al. (2018)"}
+knitr::include_graphics("cropping-systems.png")
+
+```
 <center>
 ![Source:  Bégué et al. (2018)](cropping-systems.png){width="95%"}
 </center>
