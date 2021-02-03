@@ -45,7 +45,7 @@ Bégué, A. et al. (2018) Remote Sensing and Cropping Practices: A Review. *Remo
 <img src="cropping-systems.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 <center>
-![Source:  Bégué et al. (2018)](cropping-systems.png){width="85%"}
+<p>Source:  Bégué et al. (2018)</p>
 </center>
 
 ## Requirements
@@ -70,9 +70,7 @@ Address requirements by developing a workflow to map farms and record informatio
 * **Data upload and storage** - ExpressJS server and cloud storage.
 * **Data reporting and visualisation** - Spatial dashboard (Shiny).
 
-<center>
-![](workflow.png){width="85%"}
-</center>
+<img src="workflow.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 ## Dashboard - explore kava-root crops mixed-cropping systems
 
@@ -87,9 +85,7 @@ Upload one or more GeoPackages containing spatial and non-spatial tables. Can up
 
 Click `browse` button and upload `crops.gpkg`.
 
-<center>
-![](upload.jpg){width="50%"}
-</center>
+<img src="upload.jpg" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 #### Attach spatial information to cropping system information
 
@@ -101,9 +97,7 @@ Select `Combine Tables`. Select `plot_id` as primary and foreign key.
 
 Give the joined table a name (e.g. `joined`). Click the `Join` button. 
 
-<center>
-![](join-tables.png){width="85%"}
-</center>
+<img src="join-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 #### Filter rows
 
@@ -125,15 +119,12 @@ Give the new filtered table a name: `kava_mixed`.
 
 Click `Filter`.
 
-<center>
-![](filter-rows.png){width="85%"}
-</center>
+<img src="filter-rows.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
+
 
 Check the filter rows operation went OK. Look at available tables in `Select active layer`.
 
-<center>
-![](check-filter-rows.png){width="55%"}
-</center>
+<img src="check-filter-rows.png" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 #### Add columns
 
@@ -155,9 +146,7 @@ shannon_h_div(kava_area, talo_tonga_area, talo_futuna_area, cassava_area, kumala
 
 Click `Create Column`.
 
-<center>
-![](add-column.png){width="85%"}
-</center>
+<img src="add-column.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 Repeat the process to compute kava plant density. 
 
@@ -181,9 +170,7 @@ Select one or more `Grouping variable(s)` to split the data into groups.
 
 Select one or more `Summarising variable(s)` to summarise within each group.
 
-<center>
-![](summary-tables.png){width="65%"}
-</center>
+<img src="summary-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 #### Visualise data - charts
 
@@ -195,9 +182,7 @@ Creata a hitogram to show distribution of kava plant density. Select chart optio
 
 Create a bar plot to show area of kava in different groups of farmer grower status. Select chart options as displayed in the right figure below. Click `draw chart`.
 
-<center>
-![](charts.png){width="85%"}
-</center>
+<img src="charts.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
 #### Visualise data - web maps
 
@@ -207,7 +192,6 @@ Click `Map options` to create a web map visualising crop diversity in kava-root 
 
 Use interactive pop-ups to explore attributes of each field. 
 
-<center>
-![](maps.png){width="85%"}
-</center>
+<img src="maps.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
+
 
