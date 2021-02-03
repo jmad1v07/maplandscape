@@ -79,6 +79,8 @@ Characterise farm diversity using categories (mixed cropping, monocropping, tree
 * Sync data collected on different mobile devices.
 * Helper functions for farm monitoring (e.g. compute plant number based on row and plant spacing).
 
+A version of map.landscape is available at <a href="https://livelihoods-landscape.shinyapps.io/maplandscape/" target="_blank">map.livelihoods-and-landscapes.com</a>.
+
 #### Upload data
 
 Upload one or more GeoPackages containing spatial and non-spatial tables. Can upload as a zip file. 
