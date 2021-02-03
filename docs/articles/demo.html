@@ -126,13 +126,9 @@
 <li>crop management techniques (irrigation, soil tillage, varieties etc.)</li>
 </ul>
 <p>Bégué, A. et al. (2018) Remote Sensing and Cropping Practices: A Review. <em>Remote Sensing</em>, 10(1), 99, <a href="https://doi.org/10.3390/rs10010099" target="_blank">https://doi.org/10.3390/rs10010099</a>.</p>
-<div class="figure" style="text-align: center">
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/cropping-systems.png" alt="Source:  Bégué et al. (2018)" width="85%"><p class="caption">
-Source: Bégué et al. (2018)
-</p>
-</div>
+<p><img src="cropping-systems.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/cropping-systems.png" title="fig:" style="width:95.0%" alt="Source: Bégué et al. (2018)">
+<img src="cropping-systems.png" title="fig:" style="width:85.0%" alt="Source: Bégué et al. (2018)">
 </center>
 </div>
 </div>
@@ -167,7 +163,7 @@ Source: Bégué et al. (2018)
 <strong>Data reporting and visualisation</strong> - Spatial dashboard (Shiny).</li>
 </ul>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/workflow.png" style="width:95.0%">
+<img src="workflow.png" style="width:85.0%">
 </center>
 </div>
 <div id="dashboard---explore-kava-root-crops-mixed-cropping-systems" class="section level2">
@@ -184,7 +180,7 @@ Source: Bégué et al. (2018)
 <p>Upload one or more GeoPackages containing spatial and non-spatial tables. Can upload as a zip file.</p>
 <p>Click <code>browse</code> button and upload <code>crops.gpkg</code>.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/upload.jpg" style="width:65.0%">
+<img src="upload.jpg" style="width:50.0%">
 </center>
 </div>
 <div id="attach-spatial-information-to-cropping-system-information" class="section level4">
@@ -195,7 +191,7 @@ Source: Bégué et al. (2018)
 <p>Select <code>Combine Tables</code>. Select <code>plot_id</code> as primary and foreign key.</p>
 <p>Give the joined table a name (e.g. <code>joined</code>). Click the <code>Join</code> button.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/join-tables.png" style="width:85.0%">
+<img src="join-tables.png" style="width:85.0%">
 </center>
 </div>
 <div id="filter-rows" class="section level4">
@@ -211,11 +207,11 @@ Source: Bégué et al. (2018)
 <p>Give the new filtered table a name: <code>kava_mixed</code>.</p>
 <p>Click <code>Filter</code>.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/filter-rows.png" style="width:85.0%">
+<img src="filter-rows.png" style="width:85.0%">
 </center>
 <p>Check the filter rows operation went OK. Look at available tables in <code>Select active layer</code>.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/check-filter-rows.png" style="width:65.0%">
+<img src="check-filter-rows.png" style="width:55.0%">
 </center>
 </div>
 <div id="add-columns" class="section level4">
@@ -231,7 +227,7 @@ Source: Bégué et al. (2018)
 <code class="sourceCode R"><span class="fu"><a href="../reference/shannon_h_div.html">shannon_h_div</a></span><span class="op">(</span><span class="va">kava_area</span>, <span class="va">talo_tonga_area</span>, <span class="va">talo_futuna_area</span>, <span class="va">cassava_area</span>, <span class="va">kumala_area</span>, <span class="va">kape_area</span><span class="op">)</span></code></pre></div>
 <p>Click <code>Create Column</code>.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/add-column.png" style="width:85.0%">
+<img src="add-column.png" style="width:85.0%">
 </center>
 <p>Repeat the process to compute kava plant density.</p>
 <p>Column name: <code>kava_dens</code></p>
@@ -248,7 +244,7 @@ Source: Bégué et al. (2018)
 <p>Select one or more <code>Grouping variable(s)</code> to split the data into groups.</p>
 <p>Select one or more <code>Summarising variable(s)</code> to summarise within each group.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/summary-tables.png" style="width:85.0%">
+<img src="summary-tables.png" style="width:65.0%">
 </center>
 </div>
 <div id="visualise-data---charts" class="section level4">
@@ -259,7 +255,7 @@ Source: Bégué et al. (2018)
 <p>Creata a hitogram to show distribution of kava plant density. Select chart options as displayed in the left figure below. Click <code>draw chart</code>.</p>
 <p>Create a bar plot to show area of kava in different groups of farmer grower status. Select chart options as displayed in the right figure below. Click <code>draw chart</code>.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/charts.png" style="width:85.0%">
+<img src="charts.png" style="width:85.0%">
 </center>
 </div>
 <div id="visualise-data---web-maps" class="section level4">
@@ -269,7 +265,7 @@ Source: Bégué et al. (2018)
 <p>Click <code>Map options</code> to create a web map visualising crop diversity in kava-root crops mixed systems.</p>
 <p>Use interactive pop-ups to explore attributes of each field.</p>
 <center>
-<img src="../../../../../../Dropbox%20(aciarlal)/ACIAR%20Livelihoods%20and%20Landscapes/research_activities/maplandscape/maplandscape/vignettes/maps.png" style="width:85.0%">
+<img src="maps.png" style="width:85.0%">
 </center>
 </div>
 </div>

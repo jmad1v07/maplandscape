@@ -42,12 +42,10 @@ Thornton, P. and Herrero, M. (2015) Adapting to climate change in the mixed crop
 
 Bégué, A. et al. (2018) Remote Sensing and Cropping Practices: A Review. *Remote Sensing*, 10(1), 99, <a href="https://doi.org/10.3390/rs10010099" target="_blank">https://doi.org/10.3390/rs10010099</a>.
 
-```{r, echo = FALSE, fig.align = "center", out.width = "85%", fig.cap = "Source:  Bégué et al. (2018)"}
-knitr::include_graphics("cropping-systems.png")
+<img src="cropping-systems.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-```
 <center>
-![Source:  Bégué et al. (2018)](cropping-systems.png){width="95%"}
+![Source:  Bégué et al. (2018)](cropping-systems.png){width="85%"}
 </center>
 
 ## Requirements
@@ -73,7 +71,7 @@ Address requirements by developing a workflow to map farms and record informatio
 * **Data reporting and visualisation** - Spatial dashboard (Shiny).
 
 <center>
-![](workflow.png){width="95%"}
+![](workflow.png){width="85%"}
 </center>
 
 ## Dashboard - explore kava-root crops mixed-cropping systems
@@ -90,7 +88,7 @@ Upload one or more GeoPackages containing spatial and non-spatial tables. Can up
 Click `browse` button and upload `crops.gpkg`.
 
 <center>
-![](upload.jpg){width="65%"}
+![](upload.jpg){width="50%"}
 </center>
 
 #### Attach spatial information to cropping system information
@@ -134,7 +132,7 @@ Click `Filter`.
 Check the filter rows operation went OK. Look at available tables in `Select active layer`.
 
 <center>
-![](check-filter-rows.png){width="65%"}
+![](check-filter-rows.png){width="55%"}
 </center>
 
 #### Add columns
@@ -184,7 +182,7 @@ Select one or more `Grouping variable(s)` to split the data into groups.
 Select one or more `Summarising variable(s)` to summarise within each group.
 
 <center>
-![](summary-tables.png){width="85%"}
+![](summary-tables.png){width="65%"}
 </center>
 
 #### Visualise data - charts
