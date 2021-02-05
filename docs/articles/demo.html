@@ -54,6 +54,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/1_sync_forms.html">sync forms</a>
+    </li>
+    <li>
+      <a href="../articles/2_combine_spatial_layers.html">combine spatial layers</a>
+    </li>
+    <li>
       <a href="../articles/demo.html">demo</a>
     </li>
   </ul>
@@ -182,18 +188,18 @@ Source: Bégué et al. (2018)
 <p>Click <code>browse</code> button and upload <code>crops.gpkg</code>.</p>
 <p><img src="upload.jpg" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 </div>
-<div id="attach-spatial-information-to-cropping-system-information" class="section level4">
-<h4 class="hasAnchor">
-<a href="#attach-spatial-information-to-cropping-system-information" class="anchor"></a>Attach spatial information to cropping system information</h4>
+<div id="attach-spatial-information-to-cropping-system-information" class="section level3">
+<h3 class="hasAnchor">
+<a href="#attach-spatial-information-to-cropping-system-information" class="anchor"></a>Attach spatial information to cropping system information</h3>
 <p>Use a key-based inner join operation.</p>
 <p>Go to <code>Table Analysis</code>.</p>
 <p>Select <code>Combine Tables</code>. Select <code>plot_id</code> as primary and foreign key.</p>
 <p>Give the joined table a name (e.g. <code>joined</code>). Click the <code>Join</code> button.</p>
 <p><img src="join-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 </div>
-<div id="filter-rows" class="section level4">
-<h4 class="hasAnchor">
-<a href="#filter-rows" class="anchor"></a>Filter rows</h4>
+<div id="filter-rows" class="section level3">
+<h3 class="hasAnchor">
+<a href="#filter-rows" class="anchor"></a>Filter rows</h3>
 <p>Filter the data to keep only kava-root crops mixed-cropping fields. Subset rows of a table based on their values (i.e. area of kava and root crops &gt; 0).</p>
 <p>Go to <code>Table Analysis</code>.</p>
 <p>Select <code>Filter Rows</code>. Select <code>joined</code> as table to filter.</p>
@@ -207,9 +213,9 @@ Source: Bégué et al. (2018)
 <p>Check the filter rows operation went OK. Look at available tables in <code>Select active layer</code>.</p>
 <p><img src="check-filter-rows.png" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 </div>
-<div id="add-columns" class="section level4">
-<h4 class="hasAnchor">
-<a href="#add-columns" class="anchor"></a>Add columns</h4>
+<div id="add-columns" class="section level3">
+<h3 class="hasAnchor">
+<a href="#add-columns" class="anchor"></a>Add columns</h3>
 <p>Create new variables (columns) using values in other columns.</p>
 <p>Compute crop diversity score (Shannon’H). A more diverse field has more crops grown in it and a more even allocation of area among these crops.</p>
 <p>Select <code>Add Column</code> in <code>Table Analysis</code>.</p>
@@ -226,9 +232,9 @@ Source: Bégué et al. (2018)
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kava_number</span> <span class="op">/</span> <span class="va">kava_area</span></code></pre></div>
 </div>
-<div id="summary-tables" class="section level4">
-<h4 class="hasAnchor">
-<a href="#summary-tables" class="anchor"></a>Summary tables</h4>
+<div id="summary-tables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#summary-tables" class="anchor"></a>Summary tables</h3>
 <p>Group-by and summarise operations; computes mean, sum, and count for observations in each group.</p>
 <p>Click on the <code>Data Summary</code> above the table view.</p>
 <p>Select <code>Summary Tables</code> in <code>Table Analysis</code>.</p>
@@ -236,18 +242,18 @@ Source: Bégué et al. (2018)
 <p>Select one or more <code>Summarising variable(s)</code> to summarise within each group.</p>
 <p><img src="summary-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 </div>
-<div id="visualise-data---charts" class="section level4">
-<h4 class="hasAnchor">
-<a href="#visualise-data---charts" class="anchor"></a>Visualise data - charts</h4>
+<div id="visualise-data---charts" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualise-data---charts" class="anchor"></a>Visualise data - charts</h3>
 <p>Click the <code>Charts</code> tab in the navbar.</p>
 <p>Create histograms, bar plots, and scatter plots.</p>
 <p>Creata a hitogram to show distribution of kava plant density. Select chart options as displayed in the left figure below. Click <code>draw chart</code>.</p>
 <p>Create a bar plot to show area of kava in different groups of farmer grower status. Select chart options as displayed in the right figure below. Click <code>draw chart</code>.</p>
 <p><img src="charts.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"></p>
 </div>
-<div id="visualise-data---web-maps" class="section level4">
-<h4 class="hasAnchor">
-<a href="#visualise-data---web-maps" class="anchor"></a>Visualise data - web maps</h4>
+<div id="visualise-data---web-maps" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualise-data---web-maps" class="anchor"></a>Visualise data - web maps</h3>
 <p>Click the <code>Map</code> tab in the navbar.</p>
 <p>Click <code>Map options</code> to create a web map visualising crop diversity in kava-root crops mixed systems.</p>
 <p>Use interactive pop-ups to explore attributes of each field.</p>

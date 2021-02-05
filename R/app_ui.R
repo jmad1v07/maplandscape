@@ -363,23 +363,30 @@ app_ui <- function(request) {
         fixedPage(
           tabsetPanel(
             tabPanel(
-              "Sync Forms",
+              "About",
               tags$div(
                 style = "padding-top: 10px;
                                 padding-right: 10px;
                                 padding-bottom: 10px;
                                 padding-left: 10px;",
                 
-                tags$h2("Sync Forms", style = "text-align:left;"),
+                tags$h2("About", style = "text-align:left;"),
                 
                 tags$br(),
                 
-                tags$p("Use the following workflow to sync data collected using forms on multiple mobile devices, or collected on multiple dates, using QField."),
+                tags$div(HTML("<em>map.landscape</em> is developed as part of the ACIAR funded <a href='https://livelihoods-and-landscapes.com' target='_blank'>livelihoods and landscapes</a> project. 
+                       This project is funded by the Australian Centre for International Agricultural Research (ACIAR) and is a collaboration between stakeholders in Fiji, Tonga, Australia, and New Zealand.")),
+                
+                tags$br(),
+                
+                tags$div(HTML("<em>map.landscape</em> forms part of workflow developed to map agricultural landscapes and record information about farm management and condition. 
+                       This workflow encompasses collecting geospatial data in the field using QField mobile GIS, Express server-side apps to support collating data collected on different mobile devices, and <em>map.landscape</em> for data processing and visualisation. 
+                       <em>map.landscape</em> also includes some helper functions for characterising farm diversity.")),
                 
                 tags$br(),
                 
                 tags$img(
-                  src = "www/sync-forms.png",
+                  src = "www/workflow.png",
                   width = "70%",
                   height = "auto",
                   style = "display: block;
@@ -391,240 +398,20 @@ app_ui <- function(request) {
                 
                 tags$br(),
                 
-                tags$h4("Template database", style = "text-align:left;"),
-                
-                tags$p("Select a template database (GeoPackage file - .gpkg) which will be used to sync newly collected data with. 
-                       The template database contains the structure (schema) of the database that data collected in the field, using QField, will be combined with. 
-                       For example, if the project you are using to collect data in QField has crop type, plot boundary, or farm management 
-                       tables then the template should have corresponding tables where the data will be synced to."),
-                
-                tags$div(HTML("<p>Click the <em>Browse</em> button under <em>Template of central database</em>.</p>")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/select-template.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$p("Typically, the template database will either be a database with no records (i.e. before you have collected data in the field and synced it) or a database with all previously collected data synced. 
-                       You will then sync the data you have collected using QField with the data stored in the template and update it."),
-                
-                tags$br(),
-                
-                tags$h4("Forms database", style = "text-align:left;"),
-                
-                tags$p(
-                  "forms databases are GeoPackage files (.gpkg) that store data collected using the QField mobile GIS. 
-                  You can select one or more forms to sync with the template database. When you sync data collected using QField (forms) with the template, 
-                  the app looks for matching tables or layers in each form and the template. 
-                  If there is a match, the app inserts the data from the form into the corresponding table in template and removes any duplicate records."
-                ),
-                
-                tags$div(HTML("<p>Click the <em>Browse</em> button under <em>Completed forms.</em></p>")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/select-forms.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("<p>Clicking the <em>Download</em> button will download a date- and time-stamped GeoPackage storing the synced data.</p>")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/download-forms.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("<p>Clicking the <em>go to app</em> button will take you into the dashboard where you can explore the synced data.</p>")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/go-to-app.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
+                tags$div(HTML("Read more about this workflow <a href='https://livelihoods-and-landscapes.com' target='_blank'>here</a>.")),
                 
                 hr(style = "border-color: #2c3e50 !important;")
               )
             ),
             tabPanel(
-              "Summary Tables",
+              "Docs",
               tags$div(
                 style = "padding-top: 10px;
                                 padding-right: 10px;
                                 padding-bottom: 10px;
                                 padding-left: 10px;",
-              )
-            ),
-            tabPanel(
-              "Combine Tables"
-            ),
-            tabPanel(
-              "Combine Spatial Layers",
-              tags$div(
-                style = "padding-top: 10px;
-                                padding-right: 10px;
-                                padding-bottom: 10px;
-                                padding-left: 10px;",
-                
-                tags$h2("Combine Spatial Layers", style = "text-align:left;"),
-                
-                tags$br(),
-                
-                tags$div(HTML("<em>Combine spatial layers</em> provides tools for performing spatial joins. 
-                       A spatial join allows you to combine attributes from two spatial layers based upon the feature’s relationship in space.")),
-                
-                tags$br(),
-                
-                tags$p("A spatial join could be useful in the following scenario: 
-                        you have been mapping farms using QField and have a spatial layer storing the outline of fields and attributes about each field 
-                        (e.g. farmer name, fertiliser use etc.). 
-                        You might want to combine your map of field outlines with another spatial layer 
-                       (e.g. tax allotment, village boundaries, census boundaries). 
-                       This would involve assigning attributes in your village boundary layer 
-                       (e.g. village name, village id) to fields whose outline overlaps with the village extent."),
-                
-                tags$br(),
-                
-                tags$p("In this dashboard features are joined based on the largest intersection (largest overlap) between two features. 
-                       If 30% of a field overlapped with Village A and 70% of a field overlapped with Village B, 
-                       the field would be assigned the attributes of Village B. Another way to think of this is: 
-                       the field is getting the columns from the table associated with village boundaries with the values coming 
-                       from the row in village boundaries table associated with the village with the largest overlap with the field."),
-                
-                tags$br(),
-                
-                tags$p("The following diagram illustrates the process of performing a spatial join using the field-to-village example."),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/spatial-join.png",
-                  width = "70%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("Use the <em>Table analysis</em> tools to select the <em>Combine Spatial Layers</em> option.")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/select-analysis-spatial-intersection.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("Then select the two tables you want to join in the <em>Select left table in join</em> and <em>Select right table join</em> dropdown lists. 
-                              The columns from the right table will be appended to the right of the left table.")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/select-tables-in-join.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("There are two types of join. A <em>spatial – inner</em> join will keep only feature in the left table where there is an overlap with a feature in the right table. 
-                              A <em>spatial – left</em> join will keep all features in the left table and return an NA in columns from the right table where there is no overlap.")),
-                
-                tags$div(HTML("Click the <em>Join</em> button to join the two tables. The result of the Join will appear as a table that can be selected under <em>Select active layer</em> called joined table")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/spatial-join-button.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                tags$br(),
-                
-                tags$div(HTML("<b>When is this useful?</b> Let’s keep going with the farm mapping example. 
-                              You might want to compute the area of different crop types grown in each village. 
-                              If you join your spatial layer of fields (with crop type attributes) to a village boundary layer (with a village name attribute), 
-                              you can use the table that is returned from the join to compute the area of each crop in each village.")),
-                
-                tags$br(),
-                
-                tags$div(HTML("<b>Where to get spatial layers from?</b> 
-                              Using the Browse button under <em>Upload data to explore</em> you can add multiple spatial layers to the app that you can use in spatial joins.")),
-                
-                tags$br(),
-                
-                tags$img(
-                  src = "www/upload-data.png",
-                  width = "50%",
-                  height = "auto",
-                  style = "display: block;
-                           margin-left: auto; 
-                           margin-right: auto;
-                           padding: 5px;
-                           border: thin silver solid;"
-                ),
-                
-                hr(style = "border-color: #2c3e50 !important;")
-              ) 
+              ),
+              tags$div(HTML("Documentation and vignettes for <em>map.landscape</em> can be found <a href='https://livelihoods-and-landscapes.com/maplandscape' target='_blank'>here</a>"))
             )
           )
         )

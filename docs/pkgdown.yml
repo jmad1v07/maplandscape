@@ -2,6 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  1_sync_forms: 1_sync_forms.html
+  2_combine_spatial_layers: 2_combine_spatial_layers.html
   demo: demo.html
-last_built: 2021-02-03T11:11Z
+last_built: 2021-02-05T05:51Z
 

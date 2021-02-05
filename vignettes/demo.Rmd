@@ -89,7 +89,7 @@ Click `browse` button and upload `crops.gpkg`.
 
 <img src="upload.jpg" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-#### Attach spatial information to cropping system information
+### Attach spatial information to cropping system information
 
 Use a key-based inner join operation. 
 
@@ -101,7 +101,7 @@ Give the joined table a name (e.g. `joined`). Click the `Join` button.
 
 <img src="join-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-#### Filter rows
+### Filter rows
 
 Filter the data to keep only kava-root crops mixed-cropping fields. Subset rows of a table based on their values (i.e. area of kava and root crops > 0).
 
@@ -128,7 +128,7 @@ Check the filter rows operation went OK. Look at available tables in `Select act
 
 <img src="check-filter-rows.png" width="55%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-#### Add columns
+### Add columns
 
 Create new variables (columns) using values in other columns. 
 
@@ -160,7 +160,7 @@ Copy into `Function to add new columns`:
 kava_number / kava_area
 ```
 
-#### Summary tables
+### Summary tables
 
 Group-by and summarise operations; computes mean, sum, and count for observations in each group. 
 
@@ -174,7 +174,7 @@ Select one or more `Summarising variable(s)` to summarise within each group.
 
 <img src="summary-tables.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-#### Visualise data - charts
+### Visualise data - charts
 
 Click the `Charts` tab in the navbar. 
 
@@ -186,7 +186,7 @@ Create a bar plot to show area of kava in different groups of farmer grower stat
 
 <img src="charts.png" width="75%" height="auto" style="display: block; margin-left: auto; margin-right: auto; padding: 5px; border: thin silver solid;"/>
 
-#### Visualise data - web maps
+### Visualise data - web maps
 
 Click the `Map` tab in the navbar. 
 
