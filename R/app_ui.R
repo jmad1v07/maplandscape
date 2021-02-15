@@ -284,32 +284,13 @@ app_ui <- function(request) {
         sidebarPanel(
           h4("Charts"),
           
-          tags$hr(),
-          
           selectInput("chart_active_layer", "Select active layer", choices = NULL),
+          
+          actionButton("create_chart", "draw chart"),
           
           selectInput(
             "plotType", "Chart type",
             c("histogram", "scatter", "bar plot")
-          ),
-          
-          sliderInput("chart_height", "Chart Height:",
-                      min = 100, max = 1500,
-                      value = 400, step = 100
-          ),
-          
-          textInput("x_axis_label", "X-axis label", ""),
-          
-          textInput("y_axis_label", "Y-axis label", ""),
-          
-          numericInput("lab_font", "Axis label - text size",
-                       min = 10, max = 36,
-                       value = 14, step = 1
-          ),
-          
-          numericInput("axis_font", "Axis value - text size",
-                       min = 6, max = 35,
-                       value = 10, step = 1
           ),
           
           conditionalPanel(
@@ -350,7 +331,26 @@ app_ui <- function(request) {
             )
           ),
           
-          actionButton("create_chart", "draw chart"),
+          sliderInput("chart_height", "Chart Height:",
+                      min = 100, max = 1500,
+                      value = 400, step = 100
+          ),
+          
+          textInput("x_axis_label", "X-axis label", ""),
+          
+          textInput("y_axis_label", "Y-axis label", ""),
+          
+          numericInput("lab_font", "Axis label - text size",
+                       min = 10, max = 36,
+                       value = 14, step = 1
+          ),
+          
+          numericInput("axis_font", "Axis value - text size",
+                       min = 6, max = 35,
+                       value = 10, step = 1
+          ),
+          
+          
         ),
         
         mainPanel(

@@ -411,6 +411,12 @@ app_server <- function(input, output, session) {
           placeholder = "enter table name for output"
         ),
         tags$p(
+          "DEMO SNIPPET:"
+        ),
+        tags$code(
+          "(kava_area > 0 & talo_tonga_area > 0) | (kava_area > 0 & talo_futuna_area > 0) | (kava_area > 0 & cassava_area > 0) | (kava_area > 0 & kumala_area > 0) | (kava_area > 0 & kape_area > 0)"
+        ),
+        tags$p(
           "Filter conditions must be specified using dplyr syntax. Some tips:"
         ),
         tags$ul(
@@ -426,7 +432,7 @@ app_server <- function(input, output, session) {
         tags$p("Example: crop_number > 25"),
         tags$p("Example: island == \"vava\'u\""),
         actionButton("execute_filter", "Filter"),
-        modalButton("Go to app"),
+        modalButton("close"),
         easyClose = TRUE,
         footer = NULL
       )
@@ -505,11 +511,17 @@ app_server <- function(input, output, session) {
         tags$h4("Add New Column"),
         textInput(inputId = "col_name", label = "New column name"),
         textInput(inputId = "mutate_conditions", label = "Function to add new column"),
+        tags$p(
+          "DEMO SNIPPET:"
+        ),
+        tags$code(
+          "shannon_h_div(kava_area, talo_tonga_area, talo_futuna_area, cassava_area, kumala_area, kape_area)"
+        ),
         tags$p("Function to add new column must use dplyr syntax."),
         tags$p("Example: acres * 4046.86"),
         tags$p("Example: tree_number > 0"),
         actionButton("execute_mutate", "Create column"),
-        modalButton("Go to app"),
+        modalButton("close"),
         easyClose = TRUE,
         footer = NULL
       )
