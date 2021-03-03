@@ -1110,4 +1110,31 @@ app_server <- function(input, output, session) {
     bg = "transparent"
   )
   
+  ## Vava'u Map
+  
+  # Data visualisation outputs
+  output$vavau_leafmap <- leaflet::renderLeaflet({
+    base_map <- leaflet::leaflet() %>%
+      leaflet::addTiles(group = "OSM (default)") %>%
+      leaflet::addProviderTiles(
+        providers$Esri.WorldImagery,
+        options = providerTileOptions(maxZoom = 17),
+        group = "ESRI Satellite"
+      ) %>%
+      leaflet::setView(lng = -173.985803, lat = -18.627126, zoom = 12) %>%
+      leaflet::addLayersControl(
+        baseGroups = c("OSM (default)", "ESRI Satellite"),
+        options = leaflet::layersControlOptions(collapsed = FALSE),
+        position = c("bottomright")
+      ) %>%
+      leaflet::addMeasure(
+        position = "bottomright",
+        primaryLengthUnit = "meters",
+        primaryAreaUnit = "sqmeters",
+        activeColor = "#3D535D",
+        completedColor = "#7D4479"
+      )
+  })
+    
+  
 }
