@@ -8,3 +8,5 @@ renv/
 
 rsconnect/
 inst/doc
+
+.DS_Store
