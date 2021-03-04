@@ -360,8 +360,7 @@ app_ui <- function(request) {
         "Vava'u Map",
         sidebarPanel(
           
-          actionButton("upload_vavau_data", 
-                       "Upload data"),
+          fileInput('vavau_data', 'Select .gpkg or .zip file(s)', accept = '.gpkg'),
           
           shiny::tags$br(),
           

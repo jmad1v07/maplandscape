@@ -1110,7 +1110,18 @@ app_server <- function(input, output, session) {
     bg = "transparent"
   )
   
-  ## Vava'u Map
+    req(input$vavau_data)
+    file <- input$vavau_data
+    v_df <- sf::st_read(file$datapath)
+    print(v_df)
+  })
+  observe({
+    req(vavau_data())
+    leafletProxy('vavau_leafmap', data = vavau_data()) %>%
+      clearShapes() %>%
+      addPolygons()
+  })
+  
   
   # Data visualisation outputs
   output$vavau_leafmap <- leaflet::renderLeaflet({
@@ -1135,6 +1146,5 @@ app_server <- function(input, output, session) {
         completedColor = "#7D4479"
       )
   })
-    
-  
+
 }
