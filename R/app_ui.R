@@ -360,8 +360,8 @@ app_ui <- function(request) {
         "Vava'u Map",
         sidebarPanel(
           
-          fileInput('vavau_data', 'Select .gpkg or .zip file(s)', accept = '.gpkg'),
-          
+          fileInput("vavau_data", "Select .gpkg or .zip file(s)", accept = ".gpkg"),
+        
           shiny::tags$br(),
           
           selectInput("select_main_crop", 

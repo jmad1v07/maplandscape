@@ -23,7 +23,6 @@ mod_get_layers_ui <- function(id, label, multiple, accept) {
 #' @noRd
 mod_get_layers_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    
     field_layers <- reactive({
       req(input$get_layers$datapath)
 

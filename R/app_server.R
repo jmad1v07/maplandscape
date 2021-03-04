@@ -1146,5 +1146,13 @@ app_server <- function(input, output, session) {
         completedColor = "#7D4479"
       )
   })
-
+    
+  observe({
+    req(vavau_data())
+    
+    leafletProxy("vavau_leafmap", data = vavau_data()) %>%
+      clearShapes() %>%
+      addPolygons()
+  })
+  
 }
