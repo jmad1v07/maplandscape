@@ -414,7 +414,7 @@ app_server <- function(input, output, session) {
           "DEMO SNIPPET:"
         ),
         tags$code(
-          "(kava_area > 0 & talo_tonga_area > 0) | (kava_area > 0 & talo_futuna_area > 0) | (kava_area > 0 & cassava_area > 0) | (kava_area > 0 & kumala_area > 0) | (kava_area > 0 & kape_area > 0)"
+          "crop == 'dalo'"
         ),
         tags$p(
           "Filter conditions must be specified using dplyr syntax. Some tips:"
@@ -515,7 +515,7 @@ app_server <- function(input, output, session) {
           "DEMO SNIPPET:"
         ),
         tags$code(
-          "shannon_h_div(kava_area, talo_tonga_area, talo_futuna_area, cassava_area, kumala_area, kape_area)"
+          "area.x * (area.y / 100)"
         ),
         tags$p("Function to add new column must use dplyr syntax."),
         tags$p("Example: acres * 4046.86"),
