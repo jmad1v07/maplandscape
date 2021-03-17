@@ -207,6 +207,8 @@ app_ui <- function(request) {
         ),
       ),
 
+
+# Map UI ------------------------------------------------------------------
       tabPanel(
         "Map",
         tags$style(
@@ -269,6 +271,7 @@ app_ui <- function(request) {
         )
       ),
 
+# Charts ------------------------------------------------------------------
       tabPanel(
         "Charts",
 
@@ -374,39 +377,43 @@ app_ui <- function(request) {
                 "Tonga crop survey (district)"
               )
             ),
-
-            selectInput("tonga_select_layer",
-              label = "Select layer",
-              choices = NULL
-            ),
-
+            
             conditionalPanel(
               condition = "input.tonga_data_view == 't_map'",
 
               shiny::tags$br(),
+              
+              selectInput("tonga_select_layer",
+                          label = "Select layer",
+                          choices = NULL
+              ),
 
               selectInput("tonga_map_colour",
                 "Fill colour palette",
                 choices = colour_mappings
               ),
 
-              numericInput("tonga_map_line_width",
-                "Line width",
-                0.5,
-                min = 0,
-                max = 2
-              ),
-
-              selectInput("tonga_map_line_colour",
-                "Select line colour",
-                choices = line_colours
-              ),
-
               mod_multiple_input_ui(
                 id = "tonga_label_vars",
                 label = "Popup labels"
-              )
+              ),
+              
+              actionButton(
+                "snapshot_map", 
+                "Snapshot map")
             ),
+            
+            conditionalPanel(
+              condition = "input.tonga_data_view == 't_table'",
+              
+              shiny::tags$br(),
+              
+              mod_multiple_input_ui(
+                id = "tonga_table_layers", 
+                label = "Select layer(s)"
+                )
+            ),
+            
             width = 3
           ),
 
@@ -439,7 +446,23 @@ app_ui <- function(request) {
 
             tabPanel(
               "Table",
-              value = "t_table"
+              value = "t_table",
+              
+              shiny::tags$br(),
+              
+              downloadButton(
+                "download_tonga_data", 
+                "Download Data"
+                ),
+              
+              hr(),
+              
+              div(
+                style = "overflow-x:scroll; overflow-y:scroll", 
+                mod_render_dt_ui(
+                  id = "tonga_data_dt"
+                  )
+                )
             ),
 
             tabPanel(

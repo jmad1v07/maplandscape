@@ -267,11 +267,17 @@ app_server <- function(input, output, session) {
 
   # update select input for table left primary key
   p_key <-
-    mod_multiple_input_server(id = "joining_p_key_left", m_df = left_df)
+    mod_multiple_input_server(
+      id = "joining_p_key_left", 
+      m_df = left_df
+      )
 
   # update select input for table right foreign key
   f_key <-
-    mod_multiple_input_server(id = "joining_f_key_right", m_df = right_df)
+    mod_multiple_input_server(
+      id = "joining_f_key_right", 
+      m_df = right_df
+      )
 
   join_waiter <- waiter::Waiter$new(
     html = join_screen,
@@ -706,10 +712,16 @@ app_server <- function(input, output, session) {
   })
 
   map_var <-
-    mod_single_input_server(id = "map_var", s_df = map_active_df)
+    mod_single_input_server(
+      id = "map_var", 
+      s_df = map_active_df
+      )
 
   label_vars <-
-    mod_multiple_input_server(id = "label_vars", m_df = map_active_df)
+    mod_multiple_input_server(
+      id = "label_vars", 
+      m_df = map_active_df
+      )
 
   # Create web map
   output$web_map <- leaflet::renderLeaflet({
@@ -1110,9 +1122,7 @@ app_server <- function(input, output, session) {
     bg = "transparent"
   )
 
-  # Tonga Map ---------------------------------------------------------------
-
-
+# Tonga Map ---------------------------------------------------------------
   # select one table as active layer from files loaded to the server
   observe({
     df <- input$tonga_data
@@ -1159,11 +1169,21 @@ app_server <- function(input, output, session) {
     if (input$tonga_layers == "Tonga crop survey (district)") {
       tdf <- data_file$tonga_crop_survey_district
     }
-
+    
+    # add layer id for leaflet
+    if (!is.null(tdf)) {
+      if (nrow(tdf) > 0) {
+        tdf$layer_id <- as.character(1:nrow(tdf))
+        tdf <- tdf %>%
+          dplyr::mutate_if(is.numeric, round, 3)
+      }
+    }
+    
     print(head(tdf))
     tdf
   })
-
+  
+  # Tonga Map --------------------------------------------------------
   # select one table as active layer from files loaded to the server
   observe({
     req(input$tonga_data)
@@ -1174,6 +1194,12 @@ app_server <- function(input, output, session) {
       choices = choices
     )
   })
+  
+  tonga_label_vars <-
+    mod_multiple_input_server(
+      id = "tonga_label_vars", 
+      m_df = tonga_active_df
+    )
 
   tonga_map_waiter <- waiter::Waiter$new(
     html = map_screen,
@@ -1218,17 +1244,130 @@ app_server <- function(input, output, session) {
       nrow(tonga_active_df()) > 0) {
       data_file$tonga_map_drawn <- 1
       print(data_file$tonga_map_drawn)
-
-      add_layers_leaflet(
-        map_object = "tonga_leafmap",
-        map_active_df = tonga_active_df(),
-        map_var = tonga_select_layer,
-        map_colour = map_colour,
-        opacity = 0.8,
-        map_line_width = map_line_width,
-        map_line_colour = map_line_colour,
-        waiter = tonga_map_waiter
-      )
+      
+      # don't draw legend if plot id or zone is selected
+      if (tonga_select_layer == "zone" | 
+          tonga_select_layer == "plot_id") {
+        add_layers_leaflet(
+          map_object = "tonga_leafmap",
+          map_active_df = tonga_active_df(),
+          map_var = tonga_select_layer,
+          map_colour = map_colour,
+          opacity = 0.8,
+          map_line_width = 0.5,
+          map_line_colour = "blue",
+          waiter = tonga_map_waiter
+        )
+      } else {
+        add_layers_leaflet_legend(
+          map_object = "tonga_leafmap",
+          map_active_df = tonga_active_df(),
+          map_var = tonga_select_layer,
+          map_colour = map_colour,
+          opacity = 0.8,
+          map_line_width = 0.5,
+          map_line_colour = "blue",
+          waiter = tonga_map_waiter
+        )
+      }
     }
   })
+  
+  observeEvent(input$snapshot_map, {
+    shinyscreenshot::screenshot(selector = "#tonga_leafmap")
+  })
+  
+  # add popup labels
+  observe({
+    leaflet::leafletProxy("tonga_leafmap") %>% 
+      clearPopups()
+    
+    # capture click events
+    # event_shape captures a user click on a shape object
+    # event_marker captures a user click on a marker object
+    event_shape <- input$tonga_leafmap_shape_click
+    event_marker <- input$tonga_leafmap_marker_click
+    
+    # if a user has not clicked on a marker or object leave event as null if a
+    # user has clicked on a shape or marker update event and pass it into
+    # fct_add_popups to create popup for clicked object
+    event <- NULL
+    
+    if (!is.null(event_shape)) {
+      event <- event_shape
+    }
+    
+    if (!is.null(event_marker)) {
+      event <- event_marker
+    }
+    
+    if (is.null(event)) {
+      return()
+    }
+    
+    isolate({
+      req(tonga_label_vars())
+      
+      content <-
+        add_popups(
+          in_df = tonga_active_df,
+          layer_id = event$id,
+          label_vars = tonga_label_vars
+        )
+      print(content)
+      
+      leaflet::leafletProxy("tonga_leafmap") %>%
+        leaflet::addPopups(
+          event$lng, 
+          event$lat, 
+          content, 
+          layerId = event$id)
+    })
+  })
+
+  # Tonga data table --------------------------------------------------------
+  tonga_table_vars <-
+    mod_multiple_input_server(
+      id = "tonga_table_layers",
+      m_df = tonga_active_df
+    )
+  
+  tonga_table_df <- reactive({
+    
+    if (is.null(tonga_table_vars())) {
+      table_df <- tonga_active_df()
+    } else {
+      table_df <- tonga_active_df() %>%
+        dplyr::select(tonga_table_vars())
+    }
+      
+    table_df
+  })
+
+  mod_render_dt_server(
+    id = "tonga_data_dt",
+    dt = tonga_table_df
+  )
+
+  # download tonga table data
+  output$download_tonga_data <- downloadHandler(
+    filename = function() {
+      fname <- input$tonga_layers
+      fname <- stringr::str_replace_all(fname, " ", "_")
+      paste0(fname, "_", dt(), ".csv")
+    },
+    content = function(file) {
+      req(tonga_active_df())
+
+      readr::write_csv(tonga_active_df(), file)
+    }
+  )
+  
+  # Tonga charts ------------------------------------------------------------
+  
+  
+
+# END ---------------------------------------------------------------------
+
+  
 }
