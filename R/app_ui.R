@@ -361,6 +361,7 @@ app_ui <- function(request) {
 
       tabPanel(
         "Tonga Map",
+        shinyFeedback::useShinyFeedback(),
         sidebarLayout(
           sidebarPanel(
 
@@ -412,6 +413,40 @@ app_ui <- function(request) {
                 id = "tonga_table_layers", 
                 label = "Select layer(s)"
                 )
+            ),
+            
+            conditionalPanel(
+              condition = "input.tonga_data_view == 't_chart'",
+              
+              shiny::tags$br(),
+              
+              selectInput(
+                "tonga_chart_layer",
+                label = "Select layer",
+                choices = NULL
+                ),
+              
+              sliderInput("tonga_chart_height",
+                          "Chart Height:",
+                          min = 100,
+                          max = 1500,
+                          value = 400,
+                          step = 100
+              ),
+              
+              textInput("tonga_x_axis_label", "X-axis label", ""),
+              
+              textInput("tonga_y_axis_label", "Y-axis label", ""),
+              
+              numericInput("tonga_lab_font", "Axis label - text size",
+                           min = 10, max = 36,
+                           value = 14, step = 1
+              ),
+              
+              numericInput("tonga_axis_font", "Axis value - text size",
+                           min = 6, max = 35,
+                           value = 10, step = 1
+              ),
             ),
             
             width = 3
@@ -467,7 +502,8 @@ app_ui <- function(request) {
 
             tabPanel(
               "Chart",
-              value = "t_chart"
+              value = "t_chart",
+              plotOutput("tonga_chart", height = "auto")
             )
           ),
           width = 9

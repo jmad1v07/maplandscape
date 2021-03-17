@@ -1274,7 +1274,15 @@ app_server <- function(input, output, session) {
   })
   
   observeEvent(input$snapshot_map, {
-    shinyscreenshot::screenshot(selector = "#tonga_leafmap")
+    fname <- input$tonga_layers
+    fname <- stringr::str_replace_all(fname, " ", "_")
+    layer_name <- input$tonga_select_layer
+    snap_name <- paste0(fname, "_", layer_name)
+    
+    shinyscreenshot::screenshot(
+      selector = "#tonga_leafmap",
+      filename = snap_name
+      )
   })
   
   # add popup labels
@@ -1364,6 +1372,78 @@ app_server <- function(input, output, session) {
   )
   
   # Tonga charts ------------------------------------------------------------
+  tonga_chart_df <- reactive({
+    req(input$tonga_layers != "Tonga crop survey (raw)")
+    
+    tonga_layers <- input$tonga_layers
+    
+    if (tonga_layers != "Tonga crop survey (raw)") {
+      t_chart_df <- tonga_active_df()
+    } else {
+      t_chart_df <- NULL
+    }
+    
+    t_chart_df
+    
+  })
+  
+  observe({
+    req(input$tonga_data)
+    df <- tonga_chart_df()
+    choices <- colnames(df)
+    choices <- choices[!(choices %in% "zone")]
+    choices <- choices[!(choices %in% "plot_id")]
+    choices <- choices[!(choices %in% "goem")]
+    choices <- choices[!(choices %in% "geometry")]
+    
+    updateSelectInput(
+      session,
+      "tonga_chart_layer",
+      choices = choices
+      )
+  })
+  
+  output$tonga_chart <- renderPlot({
+    req(tonga_chart_df())
+
+    tonga_chart_layer <- input$tonga_chart_layer
+    lab_font_size <- isolate(input$tonga_lab_font)
+    axis_font_size <- isolate(input$tonga_axis_font)
+    x_lab <- isolate(input$tonga_x_axis_label)
+    y_lab <- isolate(input$tonga_y_axis_label)
+    
+    if (!is.null(tonga_chart_df()) & nchar(tonga_chart_layer) > 0) {
+
+        tonga_chart_df <-  data.frame(tonga_chart_df())
+  
+        tonga_chart <- ggplot2::ggplot(
+            tonga_chart_df,
+            ggplot2::aes(.data[, 1], .data[[tonga_chart_layer]])
+          ) +
+          ggplot2::geom_col(color = "#2c3e50", fill = "#2c3e50") +
+          ggplot2::xlab(x_lab) +
+          ggplot2::ylab(y_lab) +
+          ggplot2::theme(
+            plot.background = ggplot2::element_rect(fill = NA, colour = NA),
+            panel.background = ggplot2::element_rect(fill = NA, colour = "#2c3e50"),
+            axis.text.x = ggplot2::element_text(
+              angle = -45,
+              vjust = 1,
+              hjust = 0,
+              size = axis_font_size
+            ),
+            axis.text.y = ggplot2::element_text(size = axis_font_size),
+            axis.title.x = ggplot2::element_text(size = lab_font_size),
+            axis.title.y = ggplot2::element_text(size = lab_font_size)
+          )
+    } 
+
+  },
+  height = function() {
+    input$tonga_chart_height
+  },
+  bg = "transparent"
+  )
   
   
 
