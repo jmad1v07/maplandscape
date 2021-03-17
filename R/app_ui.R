@@ -356,47 +356,102 @@ app_ui <- function(request) {
         )
       ),
 
+      # Tonga Map ---------------------------------------------------------------
+
       tabPanel(
-        "Vava'u Map",
-        sidebarPanel(
-          
-          fileInput("vavau_data", "Select .gpkg or .zip file(s)", accept = ".gpkg"),
-        
-          shiny::tags$br(),
-          
-          selectInput("select_main_crop", 
-                      label = "Select main crop", 
-                      choices = NULL),
-          
-          selectInput("select_other_crops",
-                      label = "Select other crops",
-                      choices = NULL,
-                      multiple =  TRUE),
-          
-          selectInput(
-            "location", 
-            "Select Location",
-            c("block sheet", "village", "district")
+        "Tonga Map",
+        sidebarLayout(
+          sidebarPanel(
+
+            fileInput("tonga_data", "Select .gpkg or .zip file(s)", accept = ".gpkg"),
+
+            shiny::tags$br(),
+
+            selectInput("tonga_layers",
+              label = "Select Tonga data",
+              choices = c(
+                "Tonga crop survey (raw)",
+                "Tonga crop survey (block)",
+                "Tonga crop survey (village)",
+                "Tonga crop survey (district)"
+              )
+            ),
+
+            selectInput("tonga_select_layer",
+              label = "Select layer",
+              choices = NULL
+            ),
+
+            conditionalPanel(
+              condition = "input.tonga_data_view == 't_map'",
+
+              shiny::tags$br(),
+
+              selectInput("tonga_map_colour",
+                "Fill colour palette",
+                choices = colour_mappings
+              ),
+
+              numericInput("tonga_map_line_width",
+                "Line width",
+                0.5,
+                min = 0,
+                max = 2
+              ),
+
+              selectInput("tonga_map_line_colour",
+                "Select line colour",
+                choices = line_colours
+              ),
+
+              mod_multiple_input_ui(
+                id = "tonga_label_vars",
+                label = "Popup labels"
+              )
+            ),
+            width = 3
           ),
-        ),
 
-        mainPanel(tabsetPanel(
-          type = "tabs",
+          mainPanel(tabsetPanel(
+            type = "tabs",
+            id = "tonga_data_view",
 
-          tabPanel(
-            "Map",
-            tags$style(type = "text/css", "#vavau_leafmap {height: calc(100vh - 130px) !important;}"),
-            leafletOutput("vavau_leafmap")
+            tabPanel(
+              "Map",
+              value = "t_map",
+
+              tags$style(
+                type = "text/css",
+                "#tonga_leafmap {height: calc(100vh - 135px) !important;}",
+                "body {
+                          margin: 0;
+                          padding: 0;
+                       }",
+                ".leaflet-popup-content-wrapper {background-color: #ecf0f1}",
+                # fill map to height of container;  https://stackoverflow.com/questions/36469631/how-to-get-leaflet-for-r-use-100-of-shiny-dashboard-height/36471739#36471739
+                ".leaflet-map-pane { z-index: auto; }",
+                ".shiny-notification {
+                         position:fixed;
+                         top: calc(50%);
+                         left: calc(50%);
+                       }"
+              ),
+              leafletOutput("tonga_leafmap"),
+            ),
+
+            tabPanel(
+              "Table",
+              value = "t_table"
+            ),
+
+            tabPanel(
+              "Chart",
+              value = "t_chart"
+            )
           ),
-
-          tabPanel(
-            "Table",
-          ),
-
-          tabPanel(
-            "Chart",
+          width = 9
           )
-        ))
+        )
       ),
 
       tabPanel(

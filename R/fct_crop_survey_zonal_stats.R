@@ -1,0 +1,22 @@
+crop_survey_zonal_stats <- function(zones, crops_data) {
+  
+  funs_list_numeric <- list(
+    mean = ~ mean(.x, na.rm = TRUE),
+    sum = ~ sum(.x, na.rm = TRUE)
+  )
+  
+  # catch empty or invalid polygons
+  crops_data <- crops_data[sf::st_is_valid(crops_data) != FALSE, ]
+  crops_data <- crops_data[sf::st_is_empty(crops_data) == FALSE, ]
+  
+  # catch empty or invalid polygons
+  zones <- zones[sf::st_is_valid(zones) != FALSE, ]
+  zones <- zones[sf::st_is_empty(zones) == FALSE, ]
+  
+  out_sdf<- sf::st_join(zones, crops_data, left = FALSE, largest = TRUE) %>%
+    dplyr::select(-c("plot_id")) %>%
+    dplyr::group_by(zone) %>%
+    dplyr::summarise(across(where(is.numeric), funs_list_numeric), n = n(), .groups = "keep")
+  
+  out_sdf
+}
