@@ -5,6 +5,9 @@ crop_survey_zonal_stats <- function(zones, crops_data) {
     sum = ~ sum(.x, na.rm = TRUE)
   )
   
+  sf::st_crs(zones) <- 4326
+  sf::st_crs(crops_data) <- 4326
+  
   # catch empty or invalid polygons
   crops_data <- crops_data[sf::st_is_valid(crops_data) != FALSE, ]
   crops_data <- crops_data[sf::st_is_empty(crops_data) == FALSE, ]

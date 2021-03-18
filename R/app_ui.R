@@ -208,7 +208,7 @@ app_ui <- function(request) {
       ),
 
 
-# Map UI ------------------------------------------------------------------
+      # Map UI ------------------------------------------------------------------
       tabPanel(
         "Map",
         tags$style(
@@ -271,7 +271,7 @@ app_ui <- function(request) {
         )
       ),
 
-# Charts ------------------------------------------------------------------
+      # Charts ------------------------------------------------------------------
       tabPanel(
         "Charts",
 
@@ -357,7 +357,7 @@ app_ui <- function(request) {
         )
       ),
 
-      # Tonga Map ---------------------------------------------------------------
+# Tonga Map ---------------------------------------------------------------
 
       tabPanel(
         "Tonga Map",
@@ -365,11 +365,16 @@ app_ui <- function(request) {
         sidebarLayout(
           sidebarPanel(
 
-            fileInput("tonga_data", "Select .gpkg or .zip file(s)", accept = ".gpkg"),
+            fileInput(
+              "tonga_data",
+              "Select .gpkg or .zip file(s)",
+              accept = ".gpkg"
+            ),
 
             shiny::tags$br(),
 
-            selectInput("tonga_layers",
+            selectInput(
+              "tonga_layers",
               label = "Select Tonga data",
               choices = c(
                 "Tonga crop survey (raw)",
@@ -378,18 +383,20 @@ app_ui <- function(request) {
                 "Tonga crop survey (district)"
               )
             ),
-            
+
             conditionalPanel(
               condition = "input.tonga_data_view == 't_map'",
 
               shiny::tags$br(),
-              
-              selectInput("tonga_select_layer",
-                          label = "Select layer",
-                          choices = NULL
+
+              selectInput(
+                "tonga_map_layer",
+                label = "Select layer",
+                choices = NULL
               ),
 
-              selectInput("tonga_map_colour",
+              selectInput(
+                "tonga_map_colour",
                 "Fill colour palette",
                 choices = colour_mappings
               ),
@@ -397,58 +404,71 @@ app_ui <- function(request) {
               mod_multiple_input_ui(
                 id = "tonga_label_vars",
                 label = "Popup labels"
-              ),
+              )
               
-              actionButton(
-                "snapshot_map", 
-                "Snapshot map")
             ),
-            
+
             conditionalPanel(
               condition = "input.tonga_data_view == 't_table'",
-              
+
               shiny::tags$br(),
-              
+
               mod_multiple_input_ui(
-                id = "tonga_table_layers", 
+                id = "tonga_table_layers",
                 label = "Select layer(s)"
-                )
+              )
             ),
-            
+
             conditionalPanel(
               condition = "input.tonga_data_view == 't_chart'",
-              
+
               shiny::tags$br(),
-              
+
               selectInput(
                 "tonga_chart_layer",
                 label = "Select layer",
                 choices = NULL
-                ),
-              
-              sliderInput("tonga_chart_height",
-                          "Chart Height:",
-                          min = 100,
-                          max = 1500,
-                          value = 400,
-                          step = 100
               ),
-              
-              textInput("tonga_x_axis_label", "X-axis label", ""),
-              
-              textInput("tonga_y_axis_label", "Y-axis label", ""),
-              
-              numericInput("tonga_lab_font", "Axis label - text size",
-                           min = 10, max = 36,
-                           value = 14, step = 1
+
+              sliderInput(
+                "tonga_chart_height",
+                "Chart Height:",
+                min = 100,
+                max = 1500,
+                value = 400,
+                step = 100
               ),
-              
-              numericInput("tonga_axis_font", "Axis value - text size",
-                           min = 6, max = 35,
-                           value = 10, step = 1
+
+              textInput(
+                "tonga_x_axis_label",
+                "X-axis label",
+                ""
+              ),
+
+              textInput(
+                "tonga_y_axis_label",
+                "Y-axis label",
+                ""
+              ),
+
+              numericInput(
+                "tonga_lab_font",
+                "Axis label - text size",
+                min = 10,
+                max = 36,
+                value = 14,
+                step = 1
+              ),
+
+              numericInput(
+                "tonga_axis_font",
+                "Axis value - text size",
+                min = 6,
+                max = 35,
+                value = 14,
+                step = 1
               ),
             ),
-            
             width = 3
           ),
 
@@ -482,22 +502,22 @@ app_ui <- function(request) {
             tabPanel(
               "Table",
               value = "t_table",
-              
+
               shiny::tags$br(),
-              
+
               downloadButton(
-                "download_tonga_data", 
+                "download_tonga_data",
                 "Download Data"
-                ),
-              
+              ),
+
               hr(),
-              
+
               div(
-                style = "overflow-x:scroll; overflow-y:scroll", 
+                style = "overflow-x:scroll; overflow-y:scroll",
                 mod_render_dt_ui(
                   id = "tonga_data_dt"
-                  )
                 )
+              )
             ),
 
             tabPanel(
@@ -519,11 +539,14 @@ app_ui <- function(request) {
               "About",
               tags$div(
                 style = "padding-top: 10px;
-                                padding-right: 10px;
-                                padding-bottom: 10px;
-                                padding-left: 10px;",
+                         padding-right: 10px;
+                         padding-bottom: 10px;
+                         padding-left: 10px;",
 
-                tags$h2("About", style = "text-align:left;"),
+                tags$h2(
+                  "About",
+                  style = "text-align:left;"
+                ),
 
                 tags$br(),
 
@@ -560,9 +583,9 @@ app_ui <- function(request) {
               "Docs",
               tags$div(
                 style = "padding-top: 10px;
-                                padding-right: 10px;
-                                padding-bottom: 10px;
-                                padding-left: 10px;",
+                         padding-right: 10px;
+                         padding-bottom: 10px;
+                         padding-left: 10px;",
               ),
               tags$div(HTML("Documentation and vignettes for <em>map.landscape</em> can be found <a href='https://livelihoods-and-landscapes.com/maplandscape' target='_blank'>here</a>"))
             )
